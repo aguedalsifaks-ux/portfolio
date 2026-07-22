@@ -1,0 +1,125 @@
+/*
+  Page 10 — Contact. Styles propres à cette page.
+  Dernière page du portfolio : pas de nouveau langage de diagramme, le sujet
+  est utilitaire (donner les moyens de contact), pas explicatif. Trois cartes
+  de contact réutilisent .card et le motif de badge circulaire déjà établi
+  Pages 6-8, chacune étant elle-même le lien cliquable (pas besoin de la
+  technique du lien étiré de la Page 4, la carte entière EST le lien). Pas de
+  bouton primaire "page suivante" en transition : remplacé par un lien ghost
+  de retour à l'accueil, puisqu'il n'y a pas de Page 11.
+*/
+
+.contact__title {
+  font-size: var(--font-size-4xl);
+  font-weight: var(--font-weight-semibold);
+  margin-bottom: var(--space-6);
+}
+
+.contact__context {
+  margin-bottom: var(--space-8);
+}
+
+.contact__context p {
+  font-size: var(--font-size-lg);
+}
+
+/* --- Cartes de contact --- */
+
+.contact__methods-block {
+  margin-bottom: var(--space-8);
+}
+
+.contact__methods {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.contact-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: var(--space-4);
+  height: 100%;
+  padding: var(--space-8) var(--space-6);
+  background-color: var(--color-bg);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+  transition: box-shadow var(--transition-base), transform var(--transition-base), border-color var(--transition-base);
+}
+
+.contact-card:hover,
+.contact-card:focus-visible {
+  box-shadow: var(--shadow-md);
+  transform: translateY(-2px);
+  border-color: var(--color-accent);
+}
+
+.contact-card:focus-visible {
+  outline: none;
+  box-shadow: var(--shadow-focus);
+}
+
+.contact-card__badge {
+  flex: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 64px;
+  height: 64px;
+  border-radius: var(--radius-full);
+  background-color: var(--color-bg);
+  border: 2px solid var(--color-accent);
+  color: var(--color-accent);
+  transition: background-color var(--transition-base), color var(--transition-base);
+}
+
+.contact-card:hover .contact-card__badge,
+.contact-card:focus-visible .contact-card__badge {
+  background-color: var(--color-accent);
+  color: var(--color-accent-contrast);
+}
+
+.contact-card__icon {
+  width: 26px;
+  height: 26px;
+}
+
+.contact-card__label {
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-primary);
+}
+
+.contact-card__value {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+}
+
+@media (max-width: 639px) {
+  .contact-card {
+    padding: var(--space-6) var(--space-5);
+  }
+}
+
+/* --- Texte de clôture et transition --- */
+
+.contact__closing {
+  margin-bottom: var(--space-8);
+}
+
+.contact__closing p {
+  font-size: var(--font-size-lg);
+  color: var(--color-text-secondary);
+}
+
+.contact__transition {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: var(--space-6);
+  padding-top: var(--space-6);
+  border-top: 1px solid var(--color-border);
+}

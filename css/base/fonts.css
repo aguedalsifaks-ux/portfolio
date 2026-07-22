@@ -1,0 +1,38 @@
+/*
+  Inter (variable font, sous-ensemble latin) — auto-hébergée, aucune dépendance
+  externe. Un seul fichier physique couvre toutes les graisses ; il est déclaré
+  ici une fois par graisse utilisée, comme le fait Google Fonts lui-même.
+  Licence SIL Open Font License : voir assets/fonts/OFL.txt
+*/
+
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('../../assets/fonts/Inter-Variable.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url('../../assets/fonts/Inter-Variable.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url('../../assets/fonts/Inter-Variable.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url('../../assets/fonts/Inter-Variable.woff2') format('woff2');
+}

@@ -1,0 +1,67 @@
+/*
+  Page 1 — Couverture. Styles propres à cette page uniquement.
+  La grille (grid--split), l'apparition au chargement (reveal) et le rendu du
+  bouton/placeholder vivent maintenant dans les composants partagés.
+*/
+
+.cover {
+  display: flex;
+  align-items: center;
+  min-height: 100vh;
+  min-height: 100dvh;
+}
+
+.cover .container {
+  width: 100%;
+  padding-block: var(--space-16);
+}
+
+.cover__text {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.cover__name {
+  font-size: var(--font-size-6xl);
+  line-height: 1.05;
+  margin-bottom: var(--space-3);
+}
+
+.cover__tagline {
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-semibold);
+  margin-bottom: var(--space-5);
+}
+
+.cover__value-prop {
+  max-width: 56ch;
+  margin-bottom: var(--space-8);
+}
+
+.cover__photo {
+  display: block;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  object-position: center 30%;
+  border-radius: var(--radius-lg);
+}
+
+.cover__badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+  margin-top: var(--space-8);
+}
+
+.cover__page-indicator {
+  margin-top: var(--space-6);
+}
+
+@media (min-width: 1024px) {
+  .cover__name {
+    font-size: var(--font-size-7xl);
+  }
+}

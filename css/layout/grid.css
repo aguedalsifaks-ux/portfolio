@@ -1,0 +1,93 @@
+/*
+  Breakpoints du projet (voir aussi variables.css) :
+  mobile  : < 640px
+  tablette: 640px – 1023px
+  desktop : >= 1024px
+  wide    : >= 1280px
+*/
+
+.container {
+  width: 100%;
+  max-width: var(--container-max-width);
+  margin-inline: auto;
+  padding-inline: var(--container-padding);
+}
+
+.container--narrow {
+  max-width: 720px;
+}
+
+.section {
+  padding-block: var(--space-24);
+}
+
+@media (max-width: 1023px) {
+  .section {
+    padding-block: var(--space-16);
+  }
+}
+
+@media (max-width: 639px) {
+  .section {
+    padding-block: var(--space-12);
+  }
+}
+
+.grid {
+  display: grid;
+  gap: var(--space-8);
+}
+
+.grid--cols-2,
+.grid--cols-3,
+.grid--cols-4 {
+  grid-template-columns: repeat(1, minmax(0, 1fr));
+}
+
+@media (min-width: 640px) {
+  .grid--cols-2 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .grid--cols-3 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .grid--cols-4 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 1024px) {
+  .grid--cols-3 {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .grid--cols-4 {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
+.grid--auto {
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+}
+
+/*
+  Grille « contenu + média » : une colonne de texte plus large et une colonne
+  visuelle, empilées en dessous de 1024px. Introduite pour la Couverture,
+  réutilisable telle quelle par toute page qui associe un bloc de texte à une
+  photo/visuel (ex. Qui je suis).
+*/
+.grid--split {
+  display: grid;
+  grid-template-columns: 1fr;
+  align-items: center;
+  gap: var(--space-12);
+}
+
+@media (min-width: 1024px) {
+  .grid--split {
+    grid-template-columns: 1.35fr 1fr;
+    gap: var(--space-16);
+  }
+}

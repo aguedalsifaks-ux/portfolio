@@ -1,0 +1,412 @@
+/*
+  Page 3 — Une campagne de contenu de A à Z. Styles propres à cette page.
+
+  Refonte du 2026-07-21 : la page raconte une transformation, en trois chapitres
+  très lisibles — le brief minimal reçu (« presque rien »), sa construction en
+  campagne (décision par décision), puis le résultat. Elle ne montre plus cinq
+  publications : elle démontre un raisonnement, dont les publications sont les
+  preuves.
+
+  Parti pris (ni frise, ni organigramme, ni infographie) : une mise en page
+  éditoriale haut de gamme. Chapitre 1 : une carte d'événement minimale, centrée,
+  entourée de blanc. Chapitre 2 : des blocs alternés gauche/droite comme un
+  article, la décision en grand, la publication en preuve. Aucun numéro d'étape,
+  aucune flèche, aucun connecteur.
+*/
+
+.campaign__title {
+  font-size: var(--font-size-4xl);
+  font-weight: var(--font-weight-semibold);
+  margin-bottom: var(--space-16);
+}
+
+/* Étiquette de chapitre — commune aux trois sections */
+.campaign__eyebrow {
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  letter-spacing: var(--letter-spacing-wide);
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  margin-bottom: var(--space-8);
+}
+
+/* --- Chapitre 1 : le brief (carte d'événement centrée) --- */
+
+.campaign__brief {
+  margin-bottom: var(--space-24);
+  text-align: center;
+}
+
+.campaign__brief .campaign__eyebrow {
+  margin-bottom: var(--space-10);
+}
+
+.campaign__brief-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-6);
+}
+
+.campaign__brief-avatars {
+  display: flex;
+  gap: var(--space-4);
+}
+
+.campaign__brief-avatar {
+  width: 88px;
+  height: 88px;
+  border-radius: var(--radius-full);
+  object-fit: cover;
+  box-shadow: var(--shadow-sm);
+}
+
+.campaign__brief-webinar {
+  max-width: 24ch;
+  margin: 0;
+  font-size: var(--font-size-2xl);
+  font-weight: var(--font-weight-semibold);
+  line-height: var(--line-height-tight);
+  color: var(--color-text-primary);
+}
+
+.campaign__brief-meta {
+  margin: 0;
+  font-size: var(--font-size-base);
+  color: var(--color-text-secondary);
+  letter-spacing: var(--letter-spacing-wide);
+}
+
+.campaign__brief-nothing {
+  margin: var(--space-10) 0 0;
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-primary);
+}
+
+/* --- Chapitre 2 : la construction (blocs éditoriaux alternés) --- */
+
+.campaign__production {
+  margin-bottom: var(--space-24);
+}
+
+.campaign__blocks {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-20);
+}
+
+.campaign__block {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-8);
+}
+
+.campaign__block-text {
+  max-width: 40ch;
+}
+
+.campaign__block-title {
+  font-size: var(--font-size-2xl);
+  font-weight: var(--font-weight-semibold);
+  line-height: var(--line-height-tight);
+  color: var(--color-text-primary);
+  margin-bottom: var(--space-4);
+}
+
+.campaign__block-support {
+  font-size: var(--font-size-lg);
+  color: var(--color-text-secondary);
+  line-height: var(--line-height-relaxed);
+  margin: 0;
+}
+
+.campaign__block-img {
+  display: block;
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  max-height: 320px;
+  margin-inline: auto;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+  background-color: var(--color-surface);
+}
+
+.campaign__block-pair {
+  display: flex;
+  gap: var(--space-4);
+  align-items: flex-start;
+  max-width: 440px;
+  margin-inline: auto;
+}
+
+.campaign__block-pair .campaign__pub {
+  flex: 1 1 0;
+  min-width: 0;
+}
+
+.campaign__block-pair .campaign__block-img {
+  width: 100%;
+  max-width: none;
+  max-height: none;
+  margin: 0;
+}
+
+/* Publication : le visuel, un court extrait, puis l'accès au texte complet.
+   La figure regroupe l'image cliquable et sa légende ; le conteneur .campaign__pub-full
+   (masqué) porte le texte intégral injecté dans le modal au clic. */
+.campaign__pub {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-4);
+}
+
+.campaign__pub-img {
+  cursor: pointer;
+}
+
+.campaign__pub-caption {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-3);
+  max-width: 44ch;
+}
+
+.campaign__pub-excerpt {
+  margin: 0;
+  font-size: var(--font-size-sm);
+  line-height: var(--line-height-relaxed);
+  color: var(--color-text-secondary);
+}
+
+.campaign__pub-read {
+  padding: var(--space-2) var(--space-4);
+  font-size: var(--font-size-sm);
+}
+
+/* --- Chapitre 3 : le résultat (sobre) --- */
+
+.campaign__result {
+  margin-bottom: var(--space-16);
+  padding-top: var(--space-10);
+  border-top: 1px solid var(--color-border);
+}
+
+.campaign__result-text {
+  max-width: 46ch;
+  font-size: var(--font-size-lg);
+  color: var(--color-text-secondary);
+  margin: 0;
+}
+
+.campaign__result-text strong {
+  color: var(--color-text-primary);
+  font-weight: var(--font-weight-semibold);
+}
+
+/* --- Transition --- */
+
+.campaign__transition {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: var(--space-6);
+  padding-top: var(--space-6);
+  border-top: 1px solid var(--color-border);
+}
+
+/* --- Desktop : blocs alternés gauche/droite, grands visuels --- */
+
+@media (min-width: 1024px) {
+  .campaign__block {
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    gap: var(--space-16);
+  }
+
+  /* Un bloc sur deux inverse texte / visuel — rythme éditorial */
+  .campaign__block:nth-child(even) .campaign__block-text {
+    order: 2;
+  }
+
+  .campaign__block-img {
+    max-height: 380px;
+  }
+}
+
+/* --- Mobile : composition resserrée --- */
+
+@media (max-width: 639px) {
+  .campaign__title {
+    margin-bottom: var(--space-10);
+  }
+
+  .campaign__brief,
+  .campaign__production {
+    margin-bottom: var(--space-16);
+  }
+
+  .campaign__blocks {
+    gap: var(--space-12);
+  }
+
+  .campaign__brief-avatar {
+    width: 72px;
+    height: 72px;
+  }
+
+  .campaign__brief-webinar {
+    font-size: var(--font-size-xl);
+  }
+
+  .campaign__block-title {
+    font-size: var(--font-size-xl);
+  }
+
+  .campaign__block-img {
+    max-height: 260px;
+  }
+}
+
+/* --- Modal de lecture d'une publication ---------------------------------
+   Réutilise le composant .lightbox de la page Réalisations visuelles :
+   overlay sombre plein écran (même token --color-overlay), même croix de
+   fermeture blanche en coin, même z-index et mêmes comportements JS. Il est
+   étendu ici d'un panneau (.campaign__modal-panel) qui affiche le visuel en
+   grand à gauche et le texte complet de la publication à droite. */
+.lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: var(--z-modal);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-6);
+  background-color: var(--color-overlay);
+}
+
+.lightbox[hidden] {
+  display: none;
+}
+
+.lightbox__close {
+  position: absolute;
+  top: var(--space-6);
+  right: var(--space-6);
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-full);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  background-color: transparent;
+  color: var(--color-white);
+  font-size: var(--font-size-2xl);
+  line-height: 1;
+  cursor: pointer;
+  transition: background-color var(--transition-fast);
+}
+
+.lightbox__close:hover {
+  background-color: rgba(255, 255, 255, 0.12);
+}
+
+.lightbox__close:focus-visible {
+  outline: none;
+  box-shadow: var(--shadow-focus);
+}
+
+/* Panneau : image + texte, carte claire, hauteur bornée avec défilement interne */
+.campaign__modal-panel {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 940px;
+  max-height: 90vh;
+  overflow: hidden;
+  background-color: var(--color-bg);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+}
+
+.campaign__modal-media {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-6);
+  background-color: var(--color-surface);
+}
+
+.campaign__modal-img {
+  display: block;
+  max-width: 100%;
+  max-height: 40vh;
+  object-fit: contain;
+  border-radius: var(--radius-md);
+}
+
+.campaign__modal-body {
+  flex: 1 1 auto;
+  min-width: 0;
+  overflow-y: auto;
+  padding: var(--space-8);
+}
+
+.campaign__modal-title {
+  margin-bottom: var(--space-5);
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-primary);
+}
+
+.campaign__modal-text {
+  color: var(--color-text-secondary);
+}
+
+.campaign__modal-text p {
+  margin: 0 0 var(--space-4);
+  line-height: var(--line-height-relaxed);
+}
+
+.campaign__modal-text ul {
+  margin: 0 0 var(--space-4);
+  padding-left: var(--space-5);
+}
+
+.campaign__modal-text li {
+  margin-bottom: var(--space-2);
+  line-height: var(--line-height-relaxed);
+}
+
+.campaign__modal-text > :last-child {
+  margin-bottom: 0;
+}
+
+.campaign__modal-tags {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-muted);
+}
+
+/* Desktop : visuel à gauche, texte à droite */
+@media (min-width: 768px) {
+  .campaign__modal-panel {
+    flex-direction: row;
+  }
+
+  .campaign__modal-media {
+    flex: 0 0 45%;
+    max-width: 45%;
+    padding: var(--space-8);
+  }
+
+  .campaign__modal-img {
+    max-height: 76vh;
+  }
+}

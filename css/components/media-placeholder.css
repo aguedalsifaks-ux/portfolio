@@ -1,0 +1,20 @@
+/*
+  Bloc réservé pour un visuel pas encore fourni (photo, infographie, capture...).
+  Rendu volontairement sobre pour signaler un emplacement voulu, pas un oubli.
+*/
+.media-placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+}
+
+.media-placeholder__label {
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-text-muted);
+  letter-spacing: var(--letter-spacing-wide);
+  text-transform: uppercase;
+}

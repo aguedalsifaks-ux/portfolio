@@ -1,0 +1,85 @@
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  padding: var(--space-3) var(--space-7);
+  border: 1px solid transparent;
+  border-radius: var(--radius-lg);
+  font-family: var(--font-family-base);
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-medium);
+  line-height: 1;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: background-color var(--transition-fast), border-color var(--transition-fast), color var(--transition-fast), transform var(--transition-fast);
+}
+
+.btn:focus-visible {
+  outline: none;
+  box-shadow: var(--shadow-focus);
+}
+
+.btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+.btn:not(:disabled):hover {
+  transform: translateY(-1px);
+}
+
+/*
+  Couleur de texte fixe dans tous les états (default/hover/focus/active) pour
+  les 3 variantes. Un lien générique (a:hover dans typography.css) a une
+  spécificité plus élevée qu'une simple classe et écraserait sinon cette
+  couleur au survol — seuls le fond, la bordure ou la position doivent
+  changer, jamais la couleur du texte (contraste AA garanti dans chaque état).
+*/
+.btn--primary,
+.btn--primary:hover,
+.btn--primary:focus,
+.btn--primary:active {
+  color: var(--color-accent-contrast);
+}
+
+.btn--primary {
+  background-color: var(--color-accent);
+}
+
+.btn--primary:hover {
+  background-color: var(--color-accent-hover);
+}
+
+.btn--secondary,
+.btn--secondary:hover,
+.btn--secondary:focus,
+.btn--secondary:active {
+  color: var(--color-text-primary);
+}
+
+.btn--secondary {
+  background-color: transparent;
+  border-color: var(--color-border);
+}
+
+.btn--secondary:hover {
+  background-color: var(--color-surface);
+  border-color: var(--color-gray-300);
+}
+
+.btn--ghost,
+.btn--ghost:hover,
+.btn--ghost:focus,
+.btn--ghost:active {
+  color: var(--color-accent);
+}
+
+.btn--ghost {
+  background-color: transparent;
+}
+
+.btn--ghost:hover {
+  background-color: var(--color-accent-subtle);
+}

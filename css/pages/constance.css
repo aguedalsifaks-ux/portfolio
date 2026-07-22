@@ -1,0 +1,176 @@
+/*
+  Page 7 — La constance n'est pas un hasard. Styles propres à cette page.
+  Anciennement Page 8 (Mon environnement de travail) ; fusionnée avec l'ancienne
+  Page 7 (Comment j'utilise l'IA) lors de la restructuration du portfolio en
+  9 pages. Le pilier « IA copilote » a été retiré (son contenu vit désormais
+  dans la Page 6) : 5 piliers restants au lieu de 6. Cette page ne présente
+  plus un système comme sujet : elle sert de preuve à l'affirmation d'ouverture
+  (la constance n'est pas un hasard). Pipeline linéaire connecté conservé tel
+  quel comme langage visuel — une ligne continue traversant 5 badges alignés.
+*/
+
+.pipeline__title {
+  font-size: var(--font-size-4xl);
+  font-weight: var(--font-weight-semibold);
+  margin-bottom: var(--space-6);
+}
+
+.pipeline__context {
+  margin-bottom: var(--space-8);
+}
+
+.pipeline__context p {
+  font-size: var(--font-size-lg);
+}
+
+/* --- Diagramme : rail continu + 5 étapes --- */
+
+.pipeline__diagram {
+  position: relative;
+  margin-bottom: var(--space-8);
+}
+
+.pipeline__rail {
+  position: absolute;
+  top: 39.5px;
+  left: calc((100% - 4 * var(--space-4)) / 10);
+  right: calc((100% - 4 * var(--space-4)) / 10);
+  height: 1px;
+  background-color: var(--color-border);
+}
+
+.pipeline__stages {
+  position: relative;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: var(--space-4);
+}
+
+.pipeline__stage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: var(--space-2);
+  padding: var(--space-2);
+  border-radius: var(--radius-lg);
+  outline: none;
+}
+
+.pipeline__stage:focus-visible {
+  box-shadow: var(--shadow-focus);
+}
+
+.pipeline__stage:hover .pipeline__stage-badge,
+.pipeline__stage:focus-visible .pipeline__stage-badge {
+  background-color: var(--color-accent);
+  border-color: var(--color-accent);
+  color: var(--color-accent-contrast);
+  transform: scale(1.08);
+}
+
+.pipeline__stage:hover .pipeline__stage-title,
+.pipeline__stage:focus-visible .pipeline__stage-title {
+  color: var(--color-accent);
+}
+
+.pipeline__stage-badge {
+  flex: none;
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 64px;
+  height: 64px;
+  border-radius: var(--radius-full);
+  background-color: var(--color-bg);
+  border: 2px solid var(--color-accent);
+  color: var(--color-accent);
+  transition:
+    background-color var(--transition-base),
+    border-color var(--transition-base),
+    color var(--transition-base),
+    transform var(--transition-base);
+}
+
+.pipeline__stage-icon {
+  width: 26px;
+  height: 26px;
+}
+
+.pipeline__stage-content {
+  display: flex;
+  flex-direction: column;
+}
+
+.pipeline__stage-title {
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-primary);
+  margin-bottom: 2px;
+  transition: color var(--transition-base);
+}
+
+.pipeline__stage-text {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+  line-height: var(--line-height-normal);
+}
+
+@media (max-width: 1023px) {
+  .pipeline__rail {
+    display: none;
+  }
+
+  .pipeline__stages {
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-8) var(--space-4);
+  }
+}
+
+@media (max-width: 639px) {
+  .pipeline__stages {
+    grid-template-columns: 1fr;
+    gap: var(--space-6);
+  }
+
+  .pipeline__stage {
+    flex-direction: row;
+    align-items: flex-start;
+    text-align: left;
+  }
+
+  .pipeline__stage-badge {
+    width: 44px;
+    height: 44px;
+  }
+
+  .pipeline__stage-icon {
+    width: 20px;
+    height: 20px;
+  }
+}
+
+/* --- Texte de clôture et transition --- */
+
+.pipeline__closing {
+  margin-bottom: var(--space-8);
+}
+
+.pipeline__closing p {
+  font-size: var(--font-size-lg);
+  color: var(--color-text-secondary);
+}
+
+.pipeline__transition {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: var(--space-6);
+  padding-top: var(--space-6);
+  border-top: 1px solid var(--color-border);
+}

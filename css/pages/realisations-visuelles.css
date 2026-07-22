@@ -1,0 +1,135 @@
+/*
+  Page 5 — Réalisations visuelles. Styles propres à cette page uniquement.
+  Galerie premium : les créatives parlent d'elles-mêmes, aucun titre ni
+  légende visible. Mosaïque à colonnes équilibrées : js/modules/
+  realisations-visuelles.js répartit les 12 créatives dans 1/2/4 colonnes
+  flexbox en plaçant toujours la prochaine image dans la colonne la plus
+  courte (algorithme de bin-packing classique), pour un bloc compact sans
+  grand vide, sans jamais recadrer un visuel (chaque image garde son ratio
+  réel via height: auto).
+*/
+
+.creatives__title {
+  font-size: var(--font-size-4xl);
+  font-weight: var(--font-weight-semibold);
+  margin-bottom: var(--space-4);
+}
+
+.creatives__context {
+  margin-bottom: var(--space-5);
+}
+
+.creatives__context p {
+  font-size: var(--font-size-lg);
+}
+
+.creatives__gallery {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-5);
+  margin-bottom: var(--space-6);
+}
+
+.creatives__column {
+  flex: 1 1 0;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+}
+
+.creatives__item {
+  display: block;
+  width: 100%;
+  padding: 0;
+  border: none;
+  border-radius: var(--radius-md);
+  background-color: var(--color-surface);
+  overflow: hidden;
+  cursor: pointer;
+  box-shadow: var(--shadow-sm);
+  transition: box-shadow var(--transition-base), transform var(--transition-base);
+}
+
+.creatives__item:hover,
+.creatives__item:focus-visible {
+  box-shadow: var(--shadow-md);
+  transform: translateY(-2px);
+}
+
+.creatives__item:focus-visible {
+  outline: none;
+  box-shadow: var(--shadow-focus), var(--shadow-md);
+}
+
+.creatives__thumb {
+  display: block;
+  width: 100%;
+  height: auto;
+  transition: transform var(--transition-base);
+}
+
+.creatives__item:hover .creatives__thumb,
+.creatives__item:focus-visible .creatives__thumb {
+  transform: scale(1.04);
+}
+
+.creatives__transition {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: var(--space-6);
+  padding-top: var(--space-6);
+  border-top: 1px solid var(--color-border);
+}
+
+/* Lightbox — aperçu grand format d'une créative, fermeture facile */
+.lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: var(--z-modal);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-8);
+  background-color: var(--color-overlay);
+}
+
+.lightbox[hidden] {
+  display: none;
+}
+
+.lightbox__image {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  border-radius: var(--radius-md);
+}
+
+.lightbox__close {
+  position: absolute;
+  top: var(--space-6);
+  right: var(--space-6);
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-full);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  background-color: transparent;
+  color: var(--color-white);
+  font-size: var(--font-size-2xl);
+  line-height: 1;
+  cursor: pointer;
+  transition: background-color var(--transition-fast);
+}
+
+.lightbox__close:hover {
+  background-color: rgba(255, 255, 255, 0.12);
+}
+
+.lightbox__close:focus-visible {
+  outline: none;
+  box-shadow: var(--shadow-focus);
+}

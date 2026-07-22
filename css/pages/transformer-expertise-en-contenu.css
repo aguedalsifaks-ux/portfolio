@@ -1,0 +1,321 @@
+/*
+  Page 6 — Transformer une expertise en contenu. Styles propres à cette page.
+  Schéma reconstruit à partir d'une infographie réelle fournie par
+  l'utilisateur (assets/images/infographics/) : même 7 étapes cycliques,
+  même ordre, mais reconstruites en un diagramme circulaire CSS pur (anneau
+  + hub central + nœuds positionnés par rotation), pas une reproduction de
+  la roue illustrée d'origine. Sur mobile, où un cercle deviendrait illisible,
+  les mêmes 7 nœuds repassent en liste verticale simple ; le caractère
+  cyclique reste alors porté par le texte de clôture.
+
+  Itération du 2026-07-17 (avant validation finale) : schéma agrandi d'un
+  tiers (échelle ×4/3 sur toutes les dimensions internes), pictogrammes
+  dessinés à la main par étape (SVG en ligne, aucune librairie externe), hub
+  central rendu interactif (survol/focus d'une étape → mise en évidence +
+  courte explication à la place du message par défaut).
+
+  Passe de composition du 2026-07-17 (2) : schéma encore agrandi, hub central
+  élargi, espacements resserrés autour du schéma, titre/contexte/clôture
+  recentrés pour former un seul ensemble visuel avec le schéma (au lieu d'un
+  texte à gauche et d'un schéma isolé au centre). Contenu, interactions et
+  animations inchangés.
+*/
+
+.method__title {
+  font-size: var(--font-size-4xl);
+  font-weight: var(--font-weight-semibold);
+  margin-bottom: var(--space-6);
+  text-align: center;
+}
+
+.method__context {
+  max-width: 50ch;
+  margin: 0 auto var(--space-3);
+  text-align: left;
+}
+
+.method__context p {
+  font-size: var(--font-size-lg);
+}
+
+/* --- Diagramme circulaire --- */
+
+.method__diagram {
+  --diagram-size: 780px;
+  --ring-radius: 260px;
+  position: relative;
+  width: var(--diagram-size);
+  height: var(--diagram-size);
+  max-width: 100%;
+  margin: 0 auto var(--space-1);
+}
+
+.method__ring {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: calc(var(--ring-radius) * 2);
+  height: calc(var(--ring-radius) * 2);
+  transform: translate(-50%, -50%);
+  border: 2px solid var(--color-gray-300);
+  border-radius: var(--radius-full);
+}
+
+.method__hub {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 240px;
+  height: 240px;
+  transform: translate(-50%, -50%);
+  border-radius: var(--radius-full);
+  background-color: var(--color-accent-subtle);
+}
+
+.method__hub-panel {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: var(--space-5);
+  opacity: 1;
+  transition: opacity var(--transition-base);
+}
+
+.method__hub-panel--detail {
+  gap: var(--space-2);
+  opacity: 0;
+}
+
+.method__hub--detail .method__hub-panel--default {
+  opacity: 0;
+}
+
+.method__hub--detail .method__hub-panel--detail {
+  opacity: 1;
+}
+
+.method__hub-message {
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-accent);
+  line-height: var(--line-height-tight);
+}
+
+.method__hub-step {
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-accent);
+  line-height: var(--line-height-tight);
+}
+
+.method__hub-detail-text {
+  font-size: var(--font-size-xs);
+  color: var(--color-text-secondary);
+  line-height: var(--line-height-normal);
+}
+
+.method__loop-arrow {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 42px;
+  height: 42px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-full);
+  background-color: var(--color-accent);
+  color: var(--color-accent-contrast);
+  font-size: var(--font-size-lg);
+  line-height: 1;
+  transform:
+    translate(-50%, -50%)
+    rotate(334.29deg)
+    translateY(calc(-1 * var(--ring-radius)))
+    rotate(-334.29deg);
+}
+
+.method__nodes {
+  position: absolute;
+  inset: 0;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.method__node {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  transform:
+    translate(-50%, -50%)
+    rotate(calc(360deg / 7 * var(--i)))
+    translateY(calc(-1 * var(--ring-radius)))
+    rotate(calc(-360deg / 7 * var(--i)));
+}
+
+.method__node-hit {
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-4);
+  padding: var(--space-2);
+  border-radius: var(--radius-lg);
+  cursor: default;
+}
+
+.method__node-hit:focus-visible {
+  outline: none;
+  box-shadow: var(--shadow-focus);
+}
+
+.method__node-hit:hover .method__node-badge,
+.method__node-hit:focus-visible .method__node-badge {
+  background-color: var(--color-accent);
+  border-color: var(--color-accent);
+  color: var(--color-accent-contrast);
+  transform: scale(1.08);
+}
+
+.method__node-hit:hover .method__node-label,
+.method__node-hit:focus-visible .method__node-label {
+  color: var(--color-accent);
+}
+
+.method__node-badge {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  width: 64px;
+  height: 64px;
+  border-radius: var(--radius-full);
+  background-color: var(--color-bg);
+  border: 2px solid var(--color-accent);
+  color: var(--color-accent);
+  transition:
+    background-color var(--transition-base),
+    border-color var(--transition-base),
+    color var(--transition-base),
+    transform var(--transition-base);
+}
+
+.method__node-icon {
+  width: 28px;
+  height: 28px;
+}
+
+.method__node-number {
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-semibold);
+  line-height: 1;
+}
+
+.method__node-label {
+  width: 128px;
+  text-align: center;
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-text-primary);
+  line-height: var(--line-height-tight);
+  transition: color var(--transition-base);
+}
+
+@media (max-width: 1023px) {
+  .method__diagram {
+    --diagram-size: 612px;
+    --ring-radius: 204px;
+  }
+
+  .method__hub {
+    width: 176px;
+    height: 176px;
+  }
+
+  .method__node-badge {
+    width: 54px;
+    height: 54px;
+  }
+
+  .method__node-icon {
+    width: 24px;
+    height: 24px;
+  }
+}
+
+@media (max-width: 639px) {
+  .method__diagram {
+    width: auto;
+    height: auto;
+    margin-bottom: var(--space-6);
+  }
+
+  .method__ring,
+  .method__hub,
+  .method__loop-arrow {
+    display: none;
+  }
+
+  .method__nodes {
+    position: static;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+  }
+
+  .method__node {
+    position: static;
+    width: 100%;
+    height: auto;
+    transform: none;
+  }
+
+  .method__node-hit {
+    position: static;
+    transform: none;
+    flex-direction: row;
+    align-items: center;
+    gap: var(--space-4);
+    padding: 0;
+    width: 100%;
+  }
+
+  .method__node-label {
+    width: auto;
+    text-align: left;
+    font-size: var(--font-size-base);
+  }
+}
+
+/* --- Texte de clôture et transition --- */
+
+.method__closing {
+  max-width: 50ch;
+  margin: 0 auto var(--space-8);
+  text-align: left;
+}
+
+.method__closing p {
+  font-size: var(--font-size-lg);
+  color: var(--color-text-secondary);
+}
+
+.method__transition {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: var(--space-6);
+  padding-top: var(--space-6);
+  border-top: 1px solid var(--color-border);
+}

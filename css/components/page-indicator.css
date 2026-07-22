@@ -1,0 +1,9 @@
+.page-indicator {
+  max-width: none;
+  text-align: right;
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-text-secondary);
+  letter-spacing: var(--letter-spacing-wide);
+  font-variant-numeric: tabular-nums;
+}

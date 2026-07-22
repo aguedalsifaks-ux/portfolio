@@ -1,0 +1,182 @@
+/*
+  Page 4 — Carrousels. Styles propres à cette page uniquement.
+  Bouton, indicateur de page et animations réutilisés tels quels depuis les
+  composants partagés ; la carte reprend .card et n'en modifie que le padding
+  pour laisser la bande de slides aller jusqu'aux bords.
+*/
+
+.carousels__title {
+  font-size: var(--font-size-4xl);
+  font-weight: var(--font-weight-semibold);
+  margin-bottom: var(--space-6);
+}
+
+.carousels__context {
+  margin-bottom: var(--space-8);
+}
+
+.carousels__context p {
+  font-size: var(--font-size-lg);
+}
+
+.carousels__grid {
+  margin-bottom: var(--space-8);
+}
+
+.carousel-card {
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+  overflow: hidden;
+  position: relative;
+  border: none;
+  box-shadow: var(--shadow-sm), inset 0 0 0 1px var(--color-border);
+}
+
+.carousel-card:hover {
+  box-shadow: var(--shadow-md), inset 0 0 0 1px var(--color-border);
+}
+
+/*
+  La bande de slides reste un conteneur de défilement (overflow-x + scroll-snap)
+  pour conserver le swipe tactile natif sur mobile et l'accrochage par slide,
+  mais sa barre de défilement est masquée : la navigation se fait par les
+  flèches (js/modules/carrousels.js), qui pilotent scrollLeft. Le viewport
+  positionné accueille les deux flèches sans qu'elles défilent avec les slides.
+*/
+.carousel-card__viewport {
+  position: relative;
+}
+
+.carousel-card__strip {
+  display: flex;
+  gap: var(--space-2);
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  padding: var(--space-4);
+  background-color: var(--color-surface);
+  scrollbar-width: none;        /* Firefox */
+  -ms-overflow-style: none;     /* anciens Edge/IE */
+}
+
+.carousel-card__strip::-webkit-scrollbar {
+  display: none;                /* WebKit (Chrome, Safari) */
+}
+
+/* --- Flèches de navigation du mini-carousel --- */
+
+.carousel-card__nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 2;                   /* au-dessus du lien étiré (::after) qui couvre la carte */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-full);
+  background-color: var(--color-bg);
+  color: var(--color-accent);
+  box-shadow: var(--shadow-sm);
+  cursor: pointer;
+  transition: background-color var(--transition-fast), box-shadow var(--transition-fast), opacity var(--transition-fast);
+}
+
+.carousel-card__nav--prev {
+  left: var(--space-3);
+}
+
+.carousel-card__nav--next {
+  right: var(--space-3);
+}
+
+.carousel-card__nav:hover {
+  background-color: var(--color-accent-subtle);
+  box-shadow: var(--shadow-md);
+}
+
+.carousel-card__nav:focus-visible {
+  outline: none;
+  box-shadow: var(--shadow-focus);
+}
+
+.carousel-card__nav:disabled {
+  opacity: 0.3;
+  cursor: default;
+  box-shadow: none;
+}
+
+.carousel-card__nav-icon {
+  width: 18px;
+  height: 18px;
+}
+
+.carousel-card__slide {
+  flex: none;
+  width: 140px;
+  aspect-ratio: 4 / 5;
+  object-fit: contain;
+  scroll-snap-align: start;
+  border-radius: var(--radius-md);
+  background-color: var(--color-bg);
+}
+
+.carousel-card__content {
+  padding: var(--space-6);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.carousel-card__title {
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-primary);
+}
+
+.carousel-card__caption {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+}
+
+.carousel-card__link {
+  align-self: flex-start;
+  margin-top: var(--space-2);
+}
+
+.carousel-card__link::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+}
+
+/*
+  Neutralise le léger soulèvement (translateY) que .btn:hover applique à ce
+  lien : un transform sur le <a> en ferait le bloc conteneur de son propre
+  ::after (le lien étiré en inset:0), qui se replierait alors du format carte
+  entière au seul bouton — ce qui fait retomber :hover, ré-étend l'overlay,
+  et boucle : le curseur alterne main/normal en continu, souris immobile.
+  Sélecteur volontairement plus spécifique que .btn:not(:disabled):hover.
+  La carte conserve son élévation au survol (ombre + translateY de .card).
+*/
+.carousel-card__link.btn:not(:disabled):hover {
+  transform: none;
+}
+
+.carousels__transition {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: var(--space-6);
+  padding-top: var(--space-6);
+  border-top: 1px solid var(--color-border);
+}
+
+@media (min-width: 640px) {
+  .carousel-card__slide {
+    width: 200px;
+  }
+}

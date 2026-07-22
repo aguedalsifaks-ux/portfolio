@@ -1,0 +1,79 @@
+/*
+  Page 2 — Qui je suis. Styles propres à cette page uniquement.
+  Grille, bouton, indicateur de page et animations sont réutilisés tels quels
+  depuis les composants partagés (grid--split, .btn, .page-indicator, .reveal).
+*/
+
+.about__title {
+  font-size: var(--font-size-4xl);
+  font-weight: var(--font-weight-semibold);
+  margin-bottom: var(--space-6);
+}
+
+.about__story {
+  margin-bottom: var(--space-8);
+}
+
+.about__story p {
+  font-size: var(--font-size-lg);
+}
+
+.about__foundations {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-6);
+  padding: var(--space-6);
+  background-color: var(--color-surface);
+  border-radius: var(--radius-lg);
+}
+
+.about__foundation-label {
+  display: block;
+  color: var(--color-text-primary);
+  font-weight: var(--font-weight-semibold);
+  margin-bottom: var(--space-2);
+}
+
+.about__foundation-desc {
+  display: block;
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+}
+
+.about__quote {
+  margin: 0;
+  padding: 0;
+  border: none;
+  font-style: normal;
+  font-size: var(--font-size-3xl);
+  font-weight: var(--font-weight-medium);
+  line-height: var(--line-height-tight);
+  letter-spacing: var(--letter-spacing-tight);
+  color: var(--color-text-primary);
+}
+
+.about__transition {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: var(--space-6);
+  margin-top: var(--space-8);
+  padding-top: var(--space-6);
+  border-top: 1px solid var(--color-border);
+}
+
+@media (min-width: 1024px) {
+  .about__foundations {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .about__quote {
+    font-size: var(--font-size-3xl);
+  }
+}
+
+@media (max-width: 1023px) {
+  .about__quote {
+    font-size: var(--font-size-2xl);
+  }
+}

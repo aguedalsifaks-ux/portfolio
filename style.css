@@ -1,0 +1,21 @@
+/*
+  Point d'entrée CSS du portfolio.
+  Assemble les fondations du design system — ne pas ajouter de styles ici,
+  chaque nouvelle règle doit vivre dans le bon fichier sous css/.
+*/
+
+@import url('css/base/variables.css');
+@import url('css/base/fonts.css');
+@import url('css/base/reset.css');
+@import url('css/base/typography.css');
+
+@import url('css/layout/grid.css');
+
+@import url('css/components/buttons.css');
+@import url('css/components/cards.css');
+@import url('css/components/navigation.css');
+@import url('css/components/badges.css');
+@import url('css/components/page-indicator.css');
+@import url('css/components/media-placeholder.css');
+
+@import url('css/utilities.css');

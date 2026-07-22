@@ -1,0 +1,80 @@
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.text-left {
+  text-align: left;
+}
+
+.text-right {
+  text-align: right;
+}
+
+.text-accent {
+  color: var(--color-accent);
+}
+
+.text-secondary {
+  color: var(--color-text-secondary);
+}
+
+.text-muted {
+  color: var(--color-text-muted);
+}
+
+/*
+  Apparition douce au chargement — réutilisable sur toutes les pages.
+  Usage : class="reveal" (+ un modificateur reveal-delay-N pour échelonner
+  plusieurs éléments à la suite). Neutralisé automatiquement si l'utilisateur
+  préfère un mouvement réduit (voir reset.css).
+*/
+@keyframes reveal {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.reveal {
+  animation: reveal 0.6s ease both;
+}
+
+.reveal-delay-1 {
+  animation-delay: 0.06s;
+}
+
+.reveal-delay-2 {
+  animation-delay: 0.12s;
+}
+
+.reveal-delay-3 {
+  animation-delay: 0.18s;
+}
+
+.reveal-delay-4 {
+  animation-delay: 0.24s;
+}
+
+.reveal-delay-5 {
+  animation-delay: 0.3s;
+}
+
+.reveal-delay-6 {
+  animation-delay: 0.36s;
+}
