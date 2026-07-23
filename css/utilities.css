@@ -55,6 +55,31 @@
   animation: reveal 0.6s ease both;
 }
 
+/*
+  Portfolio one-page : l'apparition « au chargement » devient une apparition
+  « au défilement ». Tant qu'une section n'est pas entrée dans le viewport, ses
+  .reveal sont mises en pause (donc figées sur leur première image : masquées) ;
+  script.js ajoute .is-inview à la section quand elle entre, ce qui relance
+  l'animation — délais compris. La classe .js (posée avant le premier rendu) fait
+  que, sans JavaScript, rien n'est mis en pause : tout reste visible et animé au
+  chargement comme avant (dégradation propre). L'animation et ses délais eux-mêmes
+  ne changent pas — seul le moment où elle se joue change.
+*/
+.js .reveal {
+  animation-play-state: paused;
+}
+
+.js .is-inview .reveal {
+  animation-play-state: running;
+}
+
+/* Mouvement réduit : ne jamais retenir le contenu — tout est révélé d'emblée. */
+@media (prefers-reduced-motion: reduce) {
+  .js .reveal {
+    animation-play-state: running;
+  }
+}
+
 .reveal-delay-1 {
   animation-delay: 0.06s;
 }

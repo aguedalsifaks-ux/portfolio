@@ -8,6 +8,8 @@ Ce fichier suit la **progression du projet** : la liste des pages, leur objectif
 
 Statuts possibles : **À faire** · **En cours** · **En attente de validation** · **Terminée / Validée**
 
+> **Architecture one-page depuis le 2026-07-23.** Les 9 « pages » ci-dessous sont désormais **9 sections d'`index.html`**, parcourues au défilement (voir README.md et PROJECT.md). Chaque entrée « *Fichier : …* » ci-dessous décrit la section d'origine ; les fichiers `pages/*.html` n'existent plus (fusionnés dans `index.html`). Les ancres internes correspondantes sont : `#couverture`, `#qui-je-suis`, `#campagne`, `#carrousels`, `#realisations`, `#methode`, `#constance`, `#apport`, `#contact`. Le contenu, l'ordre, les visuels et le design sont **inchangés** — seule l'architecture a évolué.
+
 ---
 
 ## Page 1 — Couverture
