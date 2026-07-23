@@ -38,7 +38,6 @@
 }
 
 .campaign__brief .campaign__eyebrow {
-  max-width: none;
   margin-bottom: var(--space-10);
 }
 
@@ -79,7 +78,6 @@
 }
 
 .campaign__brief-nothing {
-  max-width: none;
   margin: var(--space-10) 0 0;
   font-size: var(--font-size-lg);
   font-weight: var(--font-weight-semibold);
@@ -139,7 +137,7 @@
   display: flex;
   gap: var(--space-4);
   align-items: flex-start;
-  max-width: 560px;
+  max-width: 440px;
   margin-inline: auto;
 }
 
@@ -193,7 +191,7 @@
 /* --- Chapitre 3 : le résultat (sobre) --- */
 
 .campaign__result {
-  margin-bottom: var(--space-12);
+  margin-bottom: var(--space-16);
   padding-top: var(--space-10);
   border-top: 1px solid var(--color-border);
 }
@@ -226,7 +224,7 @@
 @media (min-width: 1024px) {
   .campaign__block {
     grid-template-columns: 1fr 1fr;
-    align-items: start;
+    align-items: center;
     gap: var(--space-16);
   }
 
@@ -405,7 +403,6 @@
   .campaign__modal-media {
     flex: 0 0 45%;
     max-width: 45%;
-    align-self: flex-start;
     padding: var(--space-8);
   }
 
